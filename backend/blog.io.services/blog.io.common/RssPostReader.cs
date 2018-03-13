@@ -1,6 +1,7 @@
 ﻿using LanguageExt;
 using Microsoft.SyndicationFeed;
 using Microsoft.SyndicationFeed.Rss;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace blog.io
         }
 
 
-        public async Task<IEnumerable<Post>> ReadPostsAsync(string rssFeed)
+        public async Task<IEnumerable<Post>> ReadPostsAsync(string rssFeed, DateTime limit)
         {
 
             var parser = new RssParser();
@@ -70,6 +71,9 @@ namespace blog.io
                             ret.Add(post);
                         }
                     }
+
+                    if (ret.Any() && ret.Max(e => e.Date) > limit)
+                        break;
 
                 }
             }

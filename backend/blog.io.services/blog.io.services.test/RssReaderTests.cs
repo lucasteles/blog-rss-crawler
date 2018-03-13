@@ -1,4 +1,5 @@
 using FluentAssertions;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
@@ -16,7 +17,7 @@ namespace blog.io.services.test
             var httpClient = FakeHttpClientFactory.Create(RssData.Empty);
             var reader = new RssPostReader(httpClient);
 
-            var posts = await reader.ReadPostsAsync(fake_url);
+            var posts = await reader.ReadPostsAsync(fake_url, DateTime.MaxValue);
 
             posts.Should().BeEmpty();
 
@@ -29,7 +30,7 @@ namespace blog.io.services.test
             var httpClient = FakeHttpClientFactory.Create(RssData.Default);
             var reader = new RssPostReader(httpClient);
 
-            var posts = await reader.ReadPostsAsync(fake_url);
+            var posts = await reader.ReadPostsAsync(fake_url, DateTime.MaxValue);
 
             posts.Should().NotBeEmpty();
             posts.Should().HaveCount(1);
@@ -57,7 +58,7 @@ namespace blog.io.services.test
             var httpClient = FakeHttpClientFactory.Create(RssData.Default, RssData.Default);
             var reader = new RssPostReader(httpClient);
 
-            var posts = await reader.ReadPostsAsync(fake_url);
+            var posts = await reader.ReadPostsAsync(fake_url, DateTime.MaxValue);
 
             posts.Should().NotBeEmpty();
             posts.Should().HaveCount(2);
@@ -66,7 +67,7 @@ namespace blog.io.services.test
             {
                 Author = "Test",
                 Content = "<p>teste!</p>",
-                Date = new System.DateTime(2018, 3, 9, 14, 0, 26),
+                Date = new DateTime(2018, 3, 9, 14, 0, 26),
                 Description = "<p>teste</p>\n",
                 Id = 42,
                 Path = "test",
@@ -77,5 +78,20 @@ namespace blog.io.services.test
             posts.Should().AllBeEquivalentTo(expected);
         }
 
+
+
+        [Fact]
+        public async Task Should_return_respect_limit_date()
+        {
+            var httpClient = FakeHttpClientFactory.Create(RssData.Default, RssData.OneYerLaterPost, RssData.OneYerLaterPost);
+            var reader = new RssPostReader(httpClient);
+
+            var posts = await reader.ReadPostsAsync(fake_url, new DateTime(2018, 12, 31));
+
+            posts.Should().NotBeEmpty();
+            posts.Should().HaveCount(2);
+
+
+        }
     }
 }

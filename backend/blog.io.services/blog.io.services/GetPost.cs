@@ -1,4 +1,3 @@
-using blog.io.common;
 using LanguageExt;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -6,7 +5,6 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace blog.io.services
@@ -23,12 +21,9 @@ namespace blog.io.services
                 return new BadRequestObjectResult("Bad id");
 
             var someId = value.ToString();
-
             Option<Post> somePost;
 
-            var client = new HttpClient();
-            var reader = new RssPostReader(client);
-            var repository = new PostsRepository(reader);
+            var repository = PostsRepositoryFactory.Create();
 
 
             somePost = int.TryParse(someId, out var id)

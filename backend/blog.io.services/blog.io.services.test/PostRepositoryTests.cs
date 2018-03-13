@@ -2,6 +2,7 @@
 using blog.io.common;
 using FakeItEasy;
 using FluentAssertions;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
@@ -23,10 +24,10 @@ namespace blog.io.services.test
                 .ToList();
 
             var rssReader = A.Fake<IRssPostReader>();
-            A.CallTo(() => rssReader.ReadPostsAsync(A<string>._)).Returns(posts_result);
+            A.CallTo(() => rssReader.ReadPostsAsync(A<string>._, A<DateTime>._)).Returns(posts_result);
 
-            var repository = new PostsRepository(rssReader);
-            var posts = await repository.GetPagedPosts(page, qtd);
+            var repository = new PostsRepository(rssReader, DateTime.MaxValue, fixture.Create<string>());
+            var posts = await repository.GetPagedPosts(page, qtd, null);
 
             posts.Should().HaveCount(qtd);
             posts_result.IndexOf(posts.First()).Should().Be((page - 1) * qtd);
@@ -61,9 +62,9 @@ namespace blog.io.services.test
 
 
             var rssReader = A.Fake<IRssPostReader>();
-            A.CallTo(() => rssReader.ReadPostsAsync(A<string>._)).Returns(posts_result);
+            A.CallTo(() => rssReader.ReadPostsAsync(A<string>._, A<DateTime>._)).Returns(posts_result);
 
-            var repository = new PostsRepository(rssReader);
+            var repository = new PostsRepository(rssReader, DateTime.MaxValue, fixture.Create<string>());
             var posts = await repository.GetPagedPosts(1, 10, "Lucas");
 
             posts.Should().HaveCount(5);
@@ -87,10 +88,9 @@ namespace blog.io.services.test
             var posts_result = Enumerable.Range(0, 3).Select(Create).ToArray();
 
             var rssReader = A.Fake<IRssPostReader>();
-            A.CallTo(() => rssReader.ReadPostsAsync(A<string>._)).Returns(posts_result);
+            A.CallTo(() => rssReader.ReadPostsAsync(A<string>._, A<DateTime>._)).Returns(posts_result);
 
-
-            var repository = new PostsRepository(rssReader);
+            var repository = new PostsRepository(rssReader, DateTime.MaxValue, fixture.Create<string>());
 
             var somePost = await repository.GetPost(999);
 
@@ -117,10 +117,10 @@ namespace blog.io.services.test
             };
 
             var rssReader = A.Fake<IRssPostReader>();
-            A.CallTo(() => rssReader.ReadPostsAsync(A<string>._)).Returns(posts_result);
+            A.CallTo(() => rssReader.ReadPostsAsync(A<string>._, A<DateTime>._)).Returns(posts_result);
 
 
-            var repository = new PostsRepository(rssReader);
+            var repository = new PostsRepository(rssReader, DateTime.MaxValue, fixture.Create<string>());
 
             var somePost = await repository.GetPost("p4");
 
@@ -144,10 +144,10 @@ namespace blog.io.services.test
             var posts_result = Enumerable.Range(0, 3).Select(Create).ToArray();
 
             var rssReader = A.Fake<IRssPostReader>();
-            A.CallTo(() => rssReader.ReadPostsAsync(A<string>._)).Returns(posts_result);
+            A.CallTo(() => rssReader.ReadPostsAsync(A<string>._, A<DateTime>._)).Returns(posts_result);
 
 
-            var repository = new PostsRepository(rssReader);
+            var repository = new PostsRepository(rssReader, DateTime.MaxValue, fixture.Create<string>());
 
             var somePost = await repository.GetPost(2);
 
@@ -176,10 +176,10 @@ namespace blog.io.services.test
             };
 
             var rssReader = A.Fake<IRssPostReader>();
-            A.CallTo(() => rssReader.ReadPostsAsync(A<string>._)).Returns(posts_result);
+            A.CallTo(() => rssReader.ReadPostsAsync(A<string>._, A<DateTime>._)).Returns(posts_result);
 
 
-            var repository = new PostsRepository(rssReader);
+            var repository = new PostsRepository(rssReader, DateTime.MaxValue, fixture.Create<string>());
 
             var somePost = await repository.GetPost("p2");
 

@@ -1,10 +1,8 @@
-using blog.io.common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace blog.io.services
@@ -22,10 +20,8 @@ namespace blog.io.services
             if (!ok)
                 return new BadRequestObjectResult("Something went wrong, really really wrong");
 
-            var client = new HttpClient();
-            var reader = new RssPostReader(client);
-            var repository = new PostsRepository(reader);
-            var posts = await repository.GetPagedPosts(page, qtd);
+            var repository = PostsRepositoryFactory.Create();
+            var posts = await repository.GetPagedPosts(page, qtd, Config.PostAuthorName);
 
             return new OkObjectResult(posts);
         }
