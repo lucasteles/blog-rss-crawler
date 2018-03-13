@@ -45,7 +45,7 @@ namespace blog.io.services
             if (this.xml != null)
             {
                 context.HttpContext.Response.Clear();
-                context.HttpContext.Response.ContentType = "application/rss+xml";
+                context.HttpContext.Response.ContentType = "application/rss+xml; charset=utf-8";
                 await context.HttpContext.Response.WriteAsync(xml);
             }
         }

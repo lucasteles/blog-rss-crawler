@@ -41,7 +41,8 @@ namespace blog.io.services.test
                 Content = "<p>teste!</p>",
                 Date = new System.DateTime(2018, 3, 9, 14, 0, 26),
                 Description = "<p>teste</p>\n",
-                Id = "http://TEST.com/?p=42",
+                Path = "test",
+                Id = 42,
                 Tags = new[] { "c1", "c2", "c3" },
                 Title = "Teste de post"
             };
@@ -67,7 +68,8 @@ namespace blog.io.services.test
                 Content = "<p>teste!</p>",
                 Date = new System.DateTime(2018, 3, 9, 14, 0, 26),
                 Description = "<p>teste</p>\n",
-                Id = "http://TEST.com/?p=42",
+                Id = 42,
+                Path = "test",
                 Tags = new[] { "c1", "c2", "c3" },
                 Title = "Teste de post"
             };

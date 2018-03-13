@@ -71,6 +71,123 @@ namespace blog.io.services.test
 
         }
 
+        [Fact]
+        public async Task Should_return_none_with_invalid_id()
+        {
+            var fixture = new Fixture();
+
+            var index = 1;
+            Post Create(int id)
+            {
+                var post = fixture.Build<Post>().Without(e => e.Id).Create();
+                post.Id = index++;
+                return post;
+            };
+
+            var posts_result = Enumerable.Range(0, 3).Select(Create).ToArray();
+
+            var rssReader = A.Fake<IRssPostReader>();
+            A.CallTo(() => rssReader.ReadPostsAsync(A<string>._)).Returns(posts_result);
+
+
+            var repository = new PostsRepository(rssReader);
+
+            var somePost = await repository.GetPost(999);
+
+            somePost.IsNone.Should().BeTrue();
+
+        }
+
+        [Fact]
+        public async Task Should_return_none_with_invalid_path()
+        {
+            var fixture = new Fixture();
+
+            Post Create(string path)
+            {
+                var post = fixture.Build<Post>().Without(e => e.Path).Create();
+                post.Path = path;
+                return post;
+            };
+
+            var posts_result = new[] {
+                Create("p1"),
+                Create("p2"),
+                Create("p3"),
+            };
+
+            var rssReader = A.Fake<IRssPostReader>();
+            A.CallTo(() => rssReader.ReadPostsAsync(A<string>._)).Returns(posts_result);
+
+
+            var repository = new PostsRepository(rssReader);
+
+            var somePost = await repository.GetPost("p4");
+
+            somePost.IsNone.Should().BeTrue();
+
+        }
+
+        [Fact]
+        public async Task Should_return_some_with_valid_id()
+        {
+            var fixture = new Fixture();
+
+            var index = 1;
+            Post Create(int id)
+            {
+                var post = fixture.Build<Post>().Without(e => e.Id).Create();
+                post.Id = index++;
+                return post;
+            };
+
+            var posts_result = Enumerable.Range(0, 3).Select(Create).ToArray();
+
+            var rssReader = A.Fake<IRssPostReader>();
+            A.CallTo(() => rssReader.ReadPostsAsync(A<string>._)).Returns(posts_result);
+
+
+            var repository = new PostsRepository(rssReader);
+
+            var somePost = await repository.GetPost(2);
+
+            somePost.IsSome.Should().BeTrue();
+
+            somePost.Some(e => e.Should().BeSameAs(posts_result[1]));
+
+        }
+
+        [Fact]
+        public async Task Should_return_some_with_valid_path()
+        {
+            var fixture = new Fixture();
+
+            Post Create(string path)
+            {
+                var post = fixture.Build<Post>().Without(e => e.Path).Create();
+                post.Path = path;
+                return post;
+            };
+
+            var posts_result = new[] {
+                Create("p1"),
+                Create("p2"),
+                Create("p3"),
+            };
+
+            var rssReader = A.Fake<IRssPostReader>();
+            A.CallTo(() => rssReader.ReadPostsAsync(A<string>._)).Returns(posts_result);
+
+
+            var repository = new PostsRepository(rssReader);
+
+            var somePost = await repository.GetPost("p2");
+
+            somePost.IsSome.Should().BeTrue();
+
+            somePost.Some(e => e.Should().BeSameAs(posts_result[1]));
+
+        }
     }
 
 

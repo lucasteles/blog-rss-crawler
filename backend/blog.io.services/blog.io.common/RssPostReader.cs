@@ -1,4 +1,5 @@
-﻿using Microsoft.SyndicationFeed;
+﻿using LanguageExt;
+using Microsoft.SyndicationFeed;
 using Microsoft.SyndicationFeed.Rss;
 using System.Collections.Generic;
 using System.IO;
@@ -22,6 +23,7 @@ namespace blog.io
 
         public async Task<IEnumerable<Post>> ReadPostsAsync(string rssFeed)
         {
+
             var parser = new RssParser();
             var ret = new List<Post>();
             var page = 0;
@@ -55,11 +57,12 @@ namespace blog.io
 
                             var post = new Post
                             {
-                                Id = item.Id,
+                                Id = int.Parse(item.Id.Split('=')[1]),
                                 Title = item.Title,
                                 Content = htmlContent?.Value,
                                 Description = item.Description,
                                 Date = item.Published.DateTime,
+                                Path = item.Links.First()?.Uri.Segments.Last(),
                                 Tags = item.Categories.Select(e => e.Name),
                                 Author = author?.Value ?? string.Empty
                             };

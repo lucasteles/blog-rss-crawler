@@ -11,6 +11,7 @@ namespace blog.io
         public string Author { get; set; }
         public IEnumerable<string> Tags { get; set; }
         public string Description { get; set; }
-        public string Id { get; set; }
+        public string Path { get; set; }
+        public int Id { get; set; }
     }
 }

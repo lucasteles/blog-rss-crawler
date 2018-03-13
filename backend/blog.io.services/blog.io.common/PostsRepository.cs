@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using LanguageExt;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -38,5 +39,14 @@ namespace blog.io.common
 
             return feed;
         }
+
+        public async Task<Option<Post>> GetPost(int id) =>
+            (await reader.ReadPostsAsync(urlFeeds))
+            .FirstOrDefault(e => e.Id == id);
+
+        public async Task<Option<Post>> GetPost(string path) =>
+           (await reader.ReadPostsAsync(urlFeeds))
+           .FirstOrDefault(e => e.Path == path);
+
     }
 }

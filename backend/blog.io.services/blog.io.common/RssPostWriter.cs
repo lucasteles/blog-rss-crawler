@@ -14,26 +14,33 @@ namespace blog.io.common
         public async static Task<string> GetFeedAsync(IEnumerable<Post> posts)
         {
             var sw = new StringWriterWithEncoding(Encoding.UTF8);
+            const string ExampleNs = "https://feed.lucasteles.net";
 
             using (var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings { Async = true, Indent = true }))
             {
-                var writer = new RssFeedWriter(xmlWriter);
+                var attributes = new List<SyndicationAttribute>
+                {
+                    new SyndicationAttribute("xmlns:feed", ExampleNs)
+                };
+
+                var formatter = new RssFormatter(attributes, xmlWriter.Settings);
+                var writer = new RssFeedWriter(xmlWriter, null, new RssFormatter() { UseCDATA = true });
 
                 //
                 // Add Title
-                await writer.WriteTitle("Example of RssFeedWriter");
+                await writer.WriteTitle("Lucas Teles - Blog");
 
                 //
                 // Add Description
-                await writer.WriteDescription("Hello World, RSS 2.0!");
+                await writer.WriteDescription("Tecnologia e inovação");
 
                 //
                 // Add Link
-                await writer.Write(new SyndicationLink(new Uri("https://github.com/dotnet/SyndicationFeedReaderWriter")));
+                await writer.Write(new SyndicationLink(new Uri("https://lucasteles.net")));
 
                 //
                 // Add managing editor
-                await writer.Write(new SyndicationPerson("managingeditor", "managingeditor@contoso.com", RssContributorTypes.ManagingEditor));
+                await writer.Write(new SyndicationPerson("lucasteles", "eu@lucasteles.net", RssContributorTypes.ManagingEditor));
 
                 //
                 // Add publish date
@@ -42,21 +49,27 @@ namespace blog.io.common
 
                 //
                 // Add Items
-                for (int i = 0; i < 5; ++i)
+                foreach (var post in posts)
                 {
                     var item = new SyndicationItem
                     {
-                        Id = "https://www.nuget.org/packages/Microsoft.SyndicationFeed.ReaderWriter",
-                        Title = $"Item #{i + 1}",
-                        Description = "The new Microsoft.SyndicationFeed.ReaderWriter is now available as a NuGet package!",
-                        Published = DateTimeOffset.UtcNow
+                        Id = $"https://lucasteles.net/p={post.Id}",
+                        Title = post.Title,
+                        Description = post.Description,
+                        Published = post.Date,
                     };
 
-                    item.AddLink(new SyndicationLink(new Uri("https://github.com/dotnet/SyndicationFeedReaderWriter")));
+                    item.AddLink(new SyndicationLink(new Uri($"https://lucasteles.net/{post.Path}")));
                     item.AddCategory(new SyndicationCategory("Technology"));
-                    item.AddContributor(new SyndicationPerson("user", "user@contoso.com"));
+                    item.AddContributor(new SyndicationPerson("Lucas Teles", "eu@lucasteles.net"));
 
-                    await writer.Write(item);
+                    // Format the item as SyndicationContent
+                    var content = new SyndicationContent(formatter.CreateContent(item));
+                    content.AddField(new SyndicationContent("content:encoded", string.Empty, post.Content));
+
+                    // Write
+                    await writer.Write(content);
+
                 }
 
                 //
