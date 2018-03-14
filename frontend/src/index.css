@@ -2,3 +2,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif; }
+
+.social-button a {
+  display: block;
+  color: white;
+  font-size: 30px;
+  margin: auto 5px;
+  width: 30px; }
+
+.social-button a:hover {
+  background-color: #999999; }
