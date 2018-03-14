@@ -18,12 +18,11 @@ const Header = () => (
 
           <div className="navbar-end">
             <div className="navbar-item social-button">
-              <a><i className="fab fa-github"></i></a>
-              <a><i className="fab fa-facebook"></i></a>
-              <a><i className="fab fa-twitter"></i></a>
-              <a><i className="fab fa-linkedin"></i></a>
-              <a><i className="fas fa-rss-square"></i></a>
-
+              <a href="https://github.com/lucasteles"><i className="fab fa-github"></i></a>
+              <a href="https://facebook.com/lucas.teles"><i className="fab fa-facebook"></i></a>
+              <a href="https://twitter.com/lucasteles42"><i className="fab fa-twitter"></i></a>
+              <a href="https://linkedin.com/in/lteles"><i className="fab fa-linkedin"></i></a>
+              <a href="https://"><i className="fas fa-rss-square"></i></a>
             </div>
           </div>
         </div>
