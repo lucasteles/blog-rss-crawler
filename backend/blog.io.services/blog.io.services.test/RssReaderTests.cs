@@ -17,7 +17,7 @@ namespace blog.io.services.test
             var httpClient = FakeHttpClientFactory.Create(RssData.Empty);
             var reader = new RssPostReader(httpClient);
 
-            var posts = await reader.ReadPostsAsync(fake_url, DateTime.MaxValue);
+            var posts = await reader.ReadPostsAsync(fake_url, DateTime.MinValue);
 
             posts.Should().BeEmpty();
 
@@ -30,7 +30,7 @@ namespace blog.io.services.test
             var httpClient = FakeHttpClientFactory.Create(RssData.Default);
             var reader = new RssPostReader(httpClient);
 
-            var posts = await reader.ReadPostsAsync(fake_url, DateTime.MaxValue);
+            var posts = await reader.ReadPostsAsync(fake_url, DateTime.MinValue);
 
             posts.Should().NotBeEmpty();
             posts.Should().HaveCount(1);
@@ -58,7 +58,7 @@ namespace blog.io.services.test
             var httpClient = FakeHttpClientFactory.Create(RssData.Default, RssData.Default);
             var reader = new RssPostReader(httpClient);
 
-            var posts = await reader.ReadPostsAsync(fake_url, DateTime.MaxValue);
+            var posts = await reader.ReadPostsAsync(fake_url, DateTime.MinValue);
 
             posts.Should().NotBeEmpty();
             posts.Should().HaveCount(2);
@@ -83,13 +83,14 @@ namespace blog.io.services.test
         [Fact]
         public async Task Should_return_respect_limit_date()
         {
-            var httpClient = FakeHttpClientFactory.Create(RssData.Default, RssData.OneYerLaterPost, RssData.OneYerLaterPost);
+            var httpClient = FakeHttpClientFactory.Create(RssData.OneYerLaterPost, RssData.Default);
             var reader = new RssPostReader(httpClient);
 
-            var posts = await reader.ReadPostsAsync(fake_url, new DateTime(2018, 12, 31));
+            var posts = await reader.ReadPostsAsync(fake_url, new DateTime(2019, 1, 1));
 
             posts.Should().NotBeEmpty();
-            posts.Should().HaveCount(2);
+            posts.Should().HaveCount(1);
+            posts.First().Date.Year.Should().Be(2019);
 
 
         }

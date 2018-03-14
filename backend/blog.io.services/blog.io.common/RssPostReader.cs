@@ -68,12 +68,12 @@ namespace blog.io
                                 Author = author?.Value ?? string.Empty
                             };
 
-                            if (post.Date <= limit)
+                            if (post.Date >= limit)
                                 ret.Add(post);
                         }
                     }
 
-                    if (ret.Any() && ret.Max(e => e.Date) > limit)
+                    if (ret.Any() && ret.Min(e => e.Date) < limit)
                         break;
 
                 }

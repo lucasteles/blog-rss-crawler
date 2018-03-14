@@ -15,11 +15,7 @@ namespace blog.io.services.test
             var handler = new MockHandler(rssData);
             return new HttpClient(handler);
         }
-
-
-
     }
-
 
     public class MockHandler : HttpMessageHandler
     {

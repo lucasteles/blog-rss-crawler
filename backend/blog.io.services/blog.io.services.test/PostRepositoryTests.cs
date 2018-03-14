@@ -26,7 +26,7 @@ namespace blog.io.services.test
             var rssReader = A.Fake<IRssPostReader>();
             A.CallTo(() => rssReader.ReadPostsAsync(A<string>._, A<DateTime>._)).Returns(posts_result);
 
-            var repository = new PostsRepository(rssReader, DateTime.MaxValue, fixture.Create<string>());
+            var repository = new PostsRepository(rssReader, DateTime.MinValue, fixture.Create<string>());
             var posts = await repository.GetPagedPosts(page, qtd, null);
 
             posts.Should().HaveCount(qtd);
@@ -64,7 +64,7 @@ namespace blog.io.services.test
             var rssReader = A.Fake<IRssPostReader>();
             A.CallTo(() => rssReader.ReadPostsAsync(A<string>._, A<DateTime>._)).Returns(posts_result);
 
-            var repository = new PostsRepository(rssReader, DateTime.MaxValue, fixture.Create<string>());
+            var repository = new PostsRepository(rssReader, DateTime.MinValue, fixture.Create<string>());
             var posts = await repository.GetPagedPosts(1, 10, "Lucas");
 
             posts.Should().HaveCount(5);
@@ -90,7 +90,7 @@ namespace blog.io.services.test
             var rssReader = A.Fake<IRssPostReader>();
             A.CallTo(() => rssReader.ReadPostsAsync(A<string>._, A<DateTime>._)).Returns(posts_result);
 
-            var repository = new PostsRepository(rssReader, DateTime.MaxValue, fixture.Create<string>());
+            var repository = new PostsRepository(rssReader, DateTime.MinValue, fixture.Create<string>());
 
             var somePost = await repository.GetPost(999);
 
@@ -120,7 +120,7 @@ namespace blog.io.services.test
             A.CallTo(() => rssReader.ReadPostsAsync(A<string>._, A<DateTime>._)).Returns(posts_result);
 
 
-            var repository = new PostsRepository(rssReader, DateTime.MaxValue, fixture.Create<string>());
+            var repository = new PostsRepository(rssReader, DateTime.MinValue, fixture.Create<string>());
 
             var somePost = await repository.GetPost("p4");
 
@@ -147,7 +147,7 @@ namespace blog.io.services.test
             A.CallTo(() => rssReader.ReadPostsAsync(A<string>._, A<DateTime>._)).Returns(posts_result);
 
 
-            var repository = new PostsRepository(rssReader, DateTime.MaxValue, fixture.Create<string>());
+            var repository = new PostsRepository(rssReader, DateTime.MinValue, fixture.Create<string>());
 
             var somePost = await repository.GetPost(2);
 
@@ -179,7 +179,7 @@ namespace blog.io.services.test
             A.CallTo(() => rssReader.ReadPostsAsync(A<string>._, A<DateTime>._)).Returns(posts_result);
 
 
-            var repository = new PostsRepository(rssReader, DateTime.MaxValue, fixture.Create<string>());
+            var repository = new PostsRepository(rssReader, DateTime.MinValue, fixture.Create<string>());
 
             var somePost = await repository.GetPost("p2");
 
