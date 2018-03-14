@@ -64,11 +64,12 @@ namespace blog.io
                                 Description = item.Description,
                                 Date = item.Published.DateTime,
                                 Path = item.Links.First()?.Uri.Segments.Last(),
-                                Tags = item.Categories.Select(e => e.Name),
+                                Tags = item.Categories.Select(e => e.Name).ToArray(),
                                 Author = author?.Value ?? string.Empty
                             };
 
-                            ret.Add(post);
+                            if (post.Date <= limit)
+                                ret.Add(post);
                         }
                     }
 

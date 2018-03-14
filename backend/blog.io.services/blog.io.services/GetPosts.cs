@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace blog.io.services
@@ -23,7 +24,7 @@ namespace blog.io.services
             var repository = PostsRepositoryFactory.Create();
             var posts = await repository.GetPagedPosts(page, qtd, Config.PostAuthorName);
 
-            return new OkObjectResult(posts);
+            return new OkObjectResult(posts.Select(p => new PostViewModel(p)));
         }
     }
 }
