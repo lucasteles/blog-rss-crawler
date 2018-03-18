@@ -10,10 +10,11 @@
 // Use the new pink as the primary color
 $primary: $purple;
 $primary-invert: $white-bis;
-$link: $purple;
+//$link: $purple;
 
 
 // Use the new serif family
 //$family-primary: $family-serif;
 
 @import 'bulma/bulma.sass';
+@import 'bulma-pageloader/dist/bulma-pageloader.sass'

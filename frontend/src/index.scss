@@ -4,15 +4,21 @@ body {
   font-family: sans-serif;
 }
 
-.social-button a {
-   display: block;
-   color: white;
-   font-size: 20px;
-   margin: auto 5px;
-   width: 30px;
+.social-button {
+  a {
+    display: block;
+    color: white;
+    font-size: 20px;
+    margin: auto 5px;
+    width: 30px;
+
+    &:hover {
+      color: lightcoral;
+      -webkit-transition: color 400ms linear;
+      -ms-transition: color 400ms linear;
+      transition: color 400ms linear;
+    }
+  }
    
 }
 
-.social-button a:hover {
-  background-color: rgba($color: #999, $alpha: 1.0);
-}

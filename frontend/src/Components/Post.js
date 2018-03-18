@@ -1,13 +1,19 @@
 import React from 'react'
+import renderHTML from 'react-render-html'
+import './Post.css'
 import { Link } from 'react-router-dom'
 
-const Post = (props) => {
+const Post = ({title, description, path}) => {
     return (
-      <div>
-        <h1>{props.match.params.id}</h1>
-        <Link to='/'>Back</Link>
+      <div className="blog-post">
+      <h1> 
+        <span className="anchor">#</span> 
+        <Link to={path}>{title}</Link>
+      </h1>
+      <div className="description">{renderHTML(description)}</div>
+      
       </div>
     )
   }
 
-  export default Post
+export default Post

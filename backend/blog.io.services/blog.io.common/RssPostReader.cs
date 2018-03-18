@@ -1,4 +1,5 @@
-﻿using LanguageExt;
+﻿using blog.io.common;
+using LanguageExt;
 using Microsoft.SyndicationFeed;
 using Microsoft.SyndicationFeed.Rss;
 using System;
@@ -60,8 +61,8 @@ namespace blog.io
                             {
                                 Id = int.Parse(item.Id.Split('=')[1]),
                                 Title = item.Title,
-                                Content = htmlContent?.Value,
-                                Description = item.Description,
+                                Content = Cleaner.CleanAnnoyingOriginalBlogCitation(htmlContent?.Value),
+                                Description = Cleaner.CleanAnnoyingOriginalBlogCitation(item.Description),
                                 Date = item.Published.DateTime,
                                 Path = item.Links.First()?.Uri.Segments.Last(),
                                 Tags = item.Categories.Select(e => e.Name).ToArray(),
