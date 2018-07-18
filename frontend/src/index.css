@@ -1,3 +1,4 @@
+@import url("blog-theme.scss");
 body {
   margin: 0;
   padding: 0;
@@ -10,7 +11,7 @@ body {
   margin: auto 5px;
   width: 30px; }
   .social-button a:hover {
-    color: lightcoral;
+    color: #9370DB;
     -webkit-transition: color 400ms linear;
     -ms-transition: color 400ms linear;
     transition: color 400ms linear; }

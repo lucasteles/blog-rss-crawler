@@ -5,7 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="LanguageExt" Version="1.7.0" />
-    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.6" />
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.14" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\blog.io.common\blog.io.common.csproj" />

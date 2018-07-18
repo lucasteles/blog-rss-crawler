@@ -24,14 +24,15 @@ class FullPost extends React.Component {
         <Loader hidden={this.state.loaded}/>
          <div className="post" hidden={!this.state.loaded}>
          <div className="blog-post">
-            <h1> 
+            <h1 className="post-title"> 
               {this.state.post && this.state.post.title}
              </h1>
              <div className="description">{ this.state.post && renderHTML( this.state.post.description)}</div>
              <div className="description">{ this.state.post && renderHTML( this.state.post.content)}</div>
            </div>
           </div>
-         <Link to='/'>Voltar</Link>
+          <hr/>
+         <Link to='/' className="button is-dark">Voltar</Link>
       </div>
      )}
 

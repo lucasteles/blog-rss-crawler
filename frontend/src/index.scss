@@ -13,7 +13,7 @@ body {
     width: 30px;
 
     &:hover {
-      color: lightcoral;
+      color: #9370DB;
       -webkit-transition: color 400ms linear;
       -ms-transition: color 400ms linear;
       transition: color 400ms linear;
@@ -22,3 +22,5 @@ body {
    
 }
 
+
+@import url("blog-theme.scss");

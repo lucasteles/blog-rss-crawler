@@ -5,7 +5,7 @@ export const Presentation = () =>
     <article className="media">
     <div className="media-left">
         <figure className="image is-64x64">
-        <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"/>
+        <img src="https://secure.gravatar.com/avatar/eb7e7e1899a62d95d7a86d1585e368d0" alt="Image"/>
         </figure>
     </div>
     <div className="media-content">
@@ -13,7 +13,7 @@ export const Presentation = () =>
         <p>
             <strong>Lucas Teles</strong> <small>eu@lucasteles.net</small>
             <br />
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+            Desenvolvedor em <a href="https://lambda3.com.br">Lambda3</a>
         </p>
         </div>
     </div>
