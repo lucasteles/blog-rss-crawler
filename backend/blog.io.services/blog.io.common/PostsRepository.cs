@@ -22,7 +22,12 @@ namespace blog.io.common
 
         public async Task<IReadOnlyCollection<Post>> GetPagedPosts(int page, int qtd, string user)
         {
-            var posts = await reader.ReadPostsAsync(urlFeeds, Limit);
+            var key = $"{user}-{page}-{qtd}";
+            if (!Cache.TryGet(key, out var posts))
+            {
+                posts = await reader.ReadPostsAsync(urlFeeds, Limit);
+                Cache.Put(key, posts, TimeSpan.FromHours(6));
+            }
 
             if (user != null)
                 posts = posts.Where(e => e.Author.ToLowerInvariant().Contains(user.ToLowerInvariant()));
