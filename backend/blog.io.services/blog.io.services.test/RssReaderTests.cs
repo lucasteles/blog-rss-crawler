@@ -1,3 +1,4 @@
+using blog.io.common;
 using FluentAssertions;
 using System;
 using System.Linq;
@@ -10,6 +11,11 @@ namespace blog.io.services.test
     {
 
         private string fake_url = "http://fake.com";
+
+        public RssReaderTests()
+        {
+            Cache.Clear(); // shame
+        }
 
         [Fact]
         public async Task Should_return_empty_in_a_empty_rss_feed()

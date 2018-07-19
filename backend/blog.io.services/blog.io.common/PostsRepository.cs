@@ -22,12 +22,7 @@ namespace blog.io.common
 
         public async Task<IReadOnlyCollection<Post>> GetPagedPosts(int page, int qtd, string user)
         {
-            var key = $"{user}-{page}-{qtd}";
-            if (!Cache.TryGet(key, out var posts))
-            {
-                posts = await reader.ReadPostsAsync(urlFeeds, Limit);
-                Cache.Put(key, posts, TimeSpan.FromHours(6));
-            }
+            var posts = await reader.ReadPostsAsync(urlFeeds, Limit);
 
             if (user != null)
                 posts = posts.Where(e => e.Author.ToLowerInvariant().Contains(user.ToLowerInvariant()));
@@ -50,9 +45,11 @@ namespace blog.io.common
             return feed;
         }
 
-        public async Task<Option<Post>> GetPost(int id) =>
-            (await reader.ReadPostsAsync(urlFeeds, Limit))
-            .FirstOrDefault(e => e.Id == id);
+        public async Task<Option<Post>> GetPost(int id)
+        {
+            return (await reader.ReadPostsAsync(urlFeeds, Limit))
+.FirstOrDefault(e => e.Id == id);
+        }
 
         public async Task<Option<Post>> GetPost(string path) =>
            (await reader.ReadPostsAsync(urlFeeds, Limit))

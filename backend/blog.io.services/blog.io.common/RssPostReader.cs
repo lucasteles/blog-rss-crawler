@@ -25,6 +25,9 @@ namespace blog.io
 
         public async Task<IEnumerable<Post>> ReadPostsAsync(string rssFeed, DateTime limit)
         {
+            var key = rssFeed;
+            if (Cache.TryGet(key, out var posts))
+                return posts;
 
             var parser = new RssParser();
             var ret = new List<Post>();
@@ -80,6 +83,7 @@ namespace blog.io
                 }
             }
 
+            Cache.Put(key, ret, TimeSpan.FromHours(1));
             return ret;
         }
     }

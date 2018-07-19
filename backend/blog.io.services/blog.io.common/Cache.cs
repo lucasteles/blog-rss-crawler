@@ -11,6 +11,11 @@ namespace blog.io.common
     {
         private static Dict _cache;
 
+        public static void Clear()
+        {
+            _cache = new Dict();
+        }
+
         static Cache() => _cache = new Dict();
 
         public static void Put(string key, IEnumerable<Post> posts, TimeSpan expireTime) =>
