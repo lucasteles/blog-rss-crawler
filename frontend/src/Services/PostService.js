@@ -11,7 +11,7 @@ export default class PostService
     }
 
     async GetAllPosts() {
-        const path = `${config.urls.GetPosts}?page=1&qtd=10`
+        const path = `${config.urls.GetPosts}?page=1&qtd=20`
         const response = await this.posts.get(path) 
         return response.data       
     }

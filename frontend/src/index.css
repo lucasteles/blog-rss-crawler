@@ -6,10 +6,13 @@ body {
 
 .social-button a {
   display: block;
-  color: white;
+  color: black;
   font-size: 20px;
   margin: auto 5px;
   width: 30px; }
+  @media (min-width: 768px) {
+    .social-button a {
+      color: white; } }
   .social-button a:hover {
     color: #9370DB;
     -webkit-transition: color 400ms linear;
