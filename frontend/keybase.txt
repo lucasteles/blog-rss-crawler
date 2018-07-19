@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/lucasteles
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://lucasteles.net
+  * I am lucasteles (https://keybase.io/lucasteles) on keybase.
+  * I have a public key with fingerprint 8965 034C DCE8 24FA F2E4  B118 E717 FC98 02CB 80E3
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101918b710a22357f144b884b38b783534d6dd4377fe3f82a83ce0fd4d9a7e298490a",
+      "fingerprint": "8965034cdce824faf2e4b118e717fc9802cb80e3",
+      "host": "keybase.io",
+      "key_id": "e717fc9802cb80e3",
+      "kid": "0101918b710a22357f144b884b38b783534d6dd4377fe3f82a83ce0fd4d9a7e298490a",
+      "uid": "9eddf1c1cccda8a158301fc992fd4719",
+      "username": "lucasteles"
+    },
+    "service": {
+      "hostname": "lucasteles.net",
+      "protocol": "http:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1506021891,
+  "expire_in": 157680000,
+  "prev": "61e1c85db4314bfb19b2ada6194850871f45d92b48dc0354bc047ff892c62c25",
+  "seqno": 10,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.73
+Comment: https://keybase.io/crypto
+
+yMIlAnicrZJbSBVBGMePt0y7aSFF+VALlZDpzu7s7uxBRMIoIioiK7M87c7MHheP
+e05n95wylTKsIIKIQgwLrJ5MsUwrFKEsIcmHNNAgIkFEyzSEblhkzUo91WPzMsw3
+///vu/D1LIrzJMdcqGm5/a5m3WxMX3d9xFPYszSugtODpJzzVnCldO6iAUJtx1dq
+Es7L8YAHKkC6AnhNEERJMQCEOkJQF1kQiZIIiUwIFBXFoKKBBA2JmPIGgUTVFCqo
+CKq8xmVyhmn5aTgUNi2HYZEqS7wIMcEUCdDQDIFCHQBEFaAYWEW8gHXEU5EZS4K2
+62DF6ZpNs8wgi7GHb668f+j/c92ROZxKCTEABhhjoiENSEjkAUusCsyhANUV2jRs
+aWWUqQMRrNkODVCbq8rkWDxqYuqO1u3lL02WRR3mD4WDThAHA+yvxHFCXtfqlIdc
+7VGq+35TfLppETZKZojSsG0GLc4LmBI7posFEi/zAkAqyOTosZAZpj7TVUiKjHh2
+3DQ0ypAyoAAjiehQBFA3dKDqgkY0GagQSTxSgAElogo6RATzogR1zEPFMJAqYFnA
+gsS5fR2xgozNoI7mZ0zb9FuaEwlTrurxo4Pxnphkz7yEWHfHPMlJKX82r+t64k9s
+iMc7C/NeJlzd9OFSTVZVSkLy6qHl0w/be+v3Nh96sG16Mj6tbdFF7/rYgupHGTf7
+s335A+0NoTNNXbcO5JXTytohuf9KdGowbXvBg5z8cP7u86OvVzZuWNK2L+V5c0v2
+Kn/Hk8b03Pbv85Nur4DZJRosm0ntSzqcMrhmccOnusj+5pGFaFn5/WftHWNjT33S
+xJ2td9fnTL4qil0bE62b8BjD9uXhjq7ub19qRzszOkc8H+WMt1uGpfzK8bKN1dc3
+t/iLldOfZ968/3EjO+lo4ppdVvyO9Mipgel71YGdC7LOVrTmTmUEiq9xTRu3Hiii
+2p4TbeORyMnWy70vQrPnUvu+/gLce0DW
+=4v+B
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/lucasteles
+
+==================================================================

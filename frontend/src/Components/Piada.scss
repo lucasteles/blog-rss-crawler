@@ -1,0 +1,61 @@
+.piada {
+    code {
+        padding: 5px;
+        display: inline-block;
+        margin-bottom: 20px;
+        border: dotted;
+        border-width: 1px;
+    }
+    .foto {
+        display: inline-block;
+    }
+    .center {
+        text-align: center;
+    }
+    .flip {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: 'FlipH';
+    }
+    blockquote {
+        display: inline-block;
+        font-family: Georgia, serif;
+        font-size: 18px;
+        font-style: italic;
+        width: 500px;
+        margin: 0.25em 0;
+        padding: 0.25em 40px;
+        line-height: 1.45;
+        position: relative;
+        margin-top: 20px;
+        border: 0px;
+        margin-bottom: 20px;
+    }
+    blockquote:before {
+        display: inline-block;
+        content: '\201C';
+        font-size: 80px;
+        position: absolute;
+        left: -20px;
+        top: -20px;
+        color: #7a7a7a;
+    }
+    .wrapper {
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 600px;
+        height: 300px;
+
+        margin-left: -300px;
+        margin-top: -150px;
+    }
+    .p-loader {
+        display: inline-block;
+        width: 30px;
+    }
+}
