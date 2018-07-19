@@ -27,6 +27,8 @@ class FullPost extends React.Component {
             <h1 className="post-title"> 
               {this.state.post && this.state.post.title}
              </h1>
+            <div> {this.state.post && this.state.post.tags.map(x => <span className="tag is-info">{x}</span>)} </div>
+            <hr />
              <div className="description">{ this.state.post && renderHTML( this.state.post.description)}</div>
              <div className="description">{ this.state.post && renderHTML( this.state.post.content)}</div>
            </div>
