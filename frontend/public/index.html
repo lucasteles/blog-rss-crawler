@@ -57,14 +57,14 @@
   <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
 
-  <script type='text/javascript' src='http://high5devs.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js?ver=3.0.9b'></script>
-  <script type='text/javascript' src='http://high5devs.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushRuby.js?ver=3.0.9b'></script>
-  <script type='text/javascript' src='http://high5devs.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js?ver=3.0.9b'></script>
+  <script type='text/javascript' src='/scripts/shCore.js'></script>
+  <script type='text/javascript' src='/scripts/shBrushRuby.js'></script>
+  <script type='text/javascript' src='/scripts/shBrushPlain.js'></script>
   <script type='text/javascript'>
      var highlight = (function () {
         var corecss = document.createElement('link');
         var themecss = document.createElement('link');
-        var corecssurl = "http://high5devs.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+        var corecssurl = "/styles/shCore.css";
         if (corecss.setAttribute) {
           corecss.setAttribute("rel", "stylesheet");
           corecss.setAttribute("type", "text/css");
@@ -74,7 +74,7 @@
           corecss.href = corecssurl;
         }
         document.getElementsByTagName("head")[0].insertBefore(corecss, document.getElementById("syntaxhighlighteranchor"));
-        var themecssurl = "http://high5devs.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeRDark.css?ver=3.0.9b";
+        var themecssurl = "/styles/shThemeRDark.css";
         if (themecss.setAttribute) {
           themecss.setAttribute("rel", "stylesheet");
           themecss.setAttribute("type", "text/css");
