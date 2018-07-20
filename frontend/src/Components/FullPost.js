@@ -41,8 +41,8 @@ class FullPost extends React.Component {
                                   .map(x => x.toLocaleUpperCase())
                                   .filter((value, index, self) => self.indexOf(value) === index)
                                   .map(x => toTitleCase(x))
-                                  .map(x => (
-                                    <span className="tag is-info">{x}</span>
+                                  .map((x,i) => (
+                                    <span key={i} className="tag is-info">{x}</span>
                                 ))}
                         </div>
                         <hr />

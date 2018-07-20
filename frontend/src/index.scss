@@ -26,4 +26,16 @@ body {
   
 }
 
+.syntaxhighlighter
+{
+    border: 1px solid lightgray !important;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.syntaxhighlighter .code, .syntaxhighlighter .gutter
+{
+    font-size: 0.8em !important;
+}
+
 @import url("blog-theme.scss");

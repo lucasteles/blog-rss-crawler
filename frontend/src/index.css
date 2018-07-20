@@ -18,3 +18,11 @@ body {
     -webkit-transition: color 400ms linear;
     -ms-transition: color 400ms linear;
     transition: color 400ms linear; }
+
+.syntaxhighlighter {
+  border: 1px solid lightgray !important;
+  border-radius: 5px;
+  padding: 10px; }
+
+.syntaxhighlighter .code, .syntaxhighlighter .gutter {
+  font-size: 0.8em !important; }
