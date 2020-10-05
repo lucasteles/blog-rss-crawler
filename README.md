@@ -1,3 +1,4 @@
-# DEPRECATED
+# POC
 
-acesse: [lucasteles.dev](https://lucasteles.dev)
+a RSS based wordpress crawler and blog mirror
+
