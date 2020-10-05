@@ -1,2 +1,3 @@
-# blog.io
-My personal blog code
+# DEPRECATED
+
+acesse: [lucasteles.dev](https://lucasteles.dev)
